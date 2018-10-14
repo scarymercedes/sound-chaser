@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/scarymercedes/sound-chaser#readme",
   "dependencies": {
+    "nconf": "^0.10.0",
     "spotify-web-api-node": "^4.0.0"
   }
 }
