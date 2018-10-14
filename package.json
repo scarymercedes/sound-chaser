@@ -1,0 +1,22 @@
+{
+  "name": "sound-chaser",
+  "version": "0.0.1",
+  "description": "A node.js tool that tries to migrate your Spotify playlists to other streaming platforms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scarymercedes/sound-chaser.git"
+  },
+  "author": "scarymercedes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scarymercedes/sound-chaser/issues"
+  },
+  "homepage": "https://github.com/scarymercedes/sound-chaser#readme",
+  "dependencies": {
+    "spotify-web-api-node": "^4.0.0"
+  }
+}
