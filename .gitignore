@@ -1,0 +1,2 @@
+# Ignore config.json in the event someone accidentally leaves real credentials in it
+config.json
