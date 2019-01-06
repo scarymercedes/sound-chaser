@@ -1,2 +1,2 @@
 # sound-chaser
-A node.js tool that tries to migrate your Spotify playlists to other streaming platforms
+A toolkit for exporting and migrating playlists to and from Spotify. Currently uses node.js to retrieve an access token, and then acts as a Python command line tool.

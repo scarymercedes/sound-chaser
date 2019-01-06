@@ -28,7 +28,10 @@
         <div id="oauth">
         </div>
         <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
+        <button class="btn btn-default" id="list-playlists">List all your playlists</button>
       </div>
+    <div id="playlist">
+    </div>
     </div>
 
     <script id="user-profile-template" type="text/x-handlebars-template">
@@ -59,6 +62,13 @@
       </dl>
     </script>
 
+    <script id="playlists-template" type="text/x-handlebars-template">
+      <h2>Playlist info</h2>
+      <dl class="dl-horizontal">
+        <dt>Playlists</dt><dd>{{playlists}}</dd>
+      </dl>
+    </script>
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script>
@@ -85,6 +95,10 @@
         var oauthSource = document.getElementById('oauth-template').innerHTML,
             oauthTemplate = Handlebars.compile(oauthSource),
             oauthPlaceholder = document.getElementById('oauth');
+
+        var playlistSource = document.getElementById('playlists-template').innerHTML,
+            playlistTemplate = Handlebars.compile(playlistSource),
+            playlistPlaceholder = document.getElementById('playlist');
 
         var params = getHashParams();
 
@@ -133,7 +147,20 @@
                 refresh_token: refresh_token
               });
             });
-          }, false);
+          }, false)
+          
+          document.getElementById('list-playlists').addEventListener('click', function() {
+            $.ajax({
+              url: '/list_playlists',
+              headers: {
+                  'Authorization': 'Bearer ' + access_token
+                }
+            }).done(function(data) {
+              playlistPlaceholder.innerHTML = playlistTemplate({
+                playlists: data.playlists
+              });
+            });
+          }, false);;
         }
       })();
     </script>
