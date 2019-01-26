@@ -1,5 +1,5 @@
 # Ignore config.json in the event someone accidentally leaves real credentials in it
-config.json
+#config.json
 # Ignore the node_modules directory because package.json should handle all that
 node_modules
 node_modules/*

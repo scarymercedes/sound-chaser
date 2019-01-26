@@ -1,0 +1,9 @@
+{
+  "spotify": {
+    "clientId": "",
+    "clientSecret": "",
+    "userId": "",
+    "redirectUri": "",
+    "accessToken": ""
+  }
+}
