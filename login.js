@@ -9,9 +9,14 @@
 
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
+const bearerToken = require('express-bearer-token'); // Express-bearer-token-extractor
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+
+// Create an object for the Spotify API
+var SpotifyWebApi = require('spotify-web-api-node');
+var spotifyApi = new SpotifyWebApi();
 
 // get the credentials
 var nconf = require('nconf')
@@ -101,7 +106,9 @@ app.get('/callback', function(req, res) {
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         };
-
+        nconf.set('spotify:accessToken', access_token)
+        nconf.save()
+        
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
           console.log(body);
@@ -143,9 +150,12 @@ app.get('/refresh_token', function(req, res) {
       res.send({
         'access_token': access_token
       });
+      nconf.set('spotify:accessToken', access_token)
+      nconf.save()
     }
   });
 });
+
 
 console.log('Listening on 8888');
 app.listen(8888);
